@@ -1,0 +1,45 @@
+version: "2"
+run:
+  timeout: 3m
+linters:
+  enable:
+    - bodyclose
+    - errcheck
+    - ineffassign
+    - gocheckcompilerdirectives
+    - godox
+    - govet
+    - lll
+    - staticcheck
+    - unused
+    - usestdlibvars
+    - whitespace
+  disable:
+    - gosec
+  settings:
+    lll:
+      # Max line length, lines longer will be reported.
+      line-length: 144
+      # Tab width of 8 columns is used on GitHub.com.
+      tab-width: 8
+  exclusions:
+    generated: lax
+    presets:
+      - comments
+      - common-false-positives
+      - legacy
+      - std-error-handling
+    paths:
+      - third_party$
+      - builtin$
+      - examples$
+formatters:
+  enable:
+    - gofmt
+    - goimports
+  exclusions:
+    generated: lax
+    paths:
+      - third_party$
+      - builtin$
+      - examples$

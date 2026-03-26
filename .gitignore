@@ -9,3 +9,10 @@
 node_modules/
 vendor/
 .terraform/
+
+# binary
+main
+netsuite-mock
+
+# air tmp folder
+/tmp
