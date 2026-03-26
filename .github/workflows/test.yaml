@@ -1,0 +1,40 @@
+name: NetSuite Mock tests
+
+on:
+  push:
+
+jobs:
+
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    timeout-minutes: ${{ fromJSON(vars.DEFAULT_JOB_TIMEOUT_MINUTES) }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+
+      - name: Install Go
+        uses: actions/setup-go@v6
+        with:
+          go-version: '1.26'
+          check-latest: true
+
+      - name: golangci-lint
+        uses: golangci/golangci-lint-action@9
+        with:
+          version: latest
+          working-directory: netsuite-mock
+
+      - name: Unit tests
+        run: go test ./...
+
+      - name: Integration tests
+        run: |
+          go run main.go &
+          sleep 1
+          ./test-api.sh
+          exit_code=$?
+          kill $(jobs -p)
+          if [ $exit_code -ne 0 ]; then
+          exit $?
+          fi
