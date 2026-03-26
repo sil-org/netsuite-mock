@@ -1,0 +1,11 @@
+# environment files typically containing secrets
+*.env
+!example.env
+
+# directories created by developer tools
+.idea/
+
+# dependency directories
+node_modules/
+vendor/
+.terraform/
