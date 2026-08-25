@@ -14,7 +14,7 @@ type CustomerPayment struct {
 	TranDate   string     `json:"tranDate"`
 	Memo       string     `json:"memo,omitempty"`
 	Subsidiary Subsidiary `json:"subsidiary"`
-	Class      Class      `json:"class,omitempty"`
+	Class      Class      `json:"class"`
 	Currency   Currency   `json:"currency"`
 	CreatedAt  time.Time  `json:"-"`
 }

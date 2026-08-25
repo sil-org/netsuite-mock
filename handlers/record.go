@@ -194,7 +194,7 @@ type CreatePaymentRequest struct {
 	TranDate   string  `json:"tranDate"`
 	Memo       string  `json:"memo,omitempty"`
 	Subsidiary Related `json:"subsidiary"`
-	Class      Related `json:"class,omitempty"`
+	Class      Related `json:"class"`
 	Currency   Related `json:"currency"`
 	ExternalID string  `json:"externalId,omitempty"`
 }
